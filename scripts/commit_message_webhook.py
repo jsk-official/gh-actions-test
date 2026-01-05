@@ -26,18 +26,14 @@ commits_embed["title"] = str(cnt) + " new commit"
 if cnt > 1:
    commits_embed["title"] += "s"
 
-print([commits_embed])
-commits_embed["fields"] = None
-
 response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
    "username": "Armored Patrol Remastered Changelogs",
    "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
    "content": "Detected a new change to the Armored Patrol Remastered development repository.",
-   #"embeds": [commits_embed],
+   "embeds": [commits_embed],
 })
 
 print(response.text)
-print(response.status_code)
 
-if response.status_code != 200:
+if response.status_code != 204:
    exit(1)
