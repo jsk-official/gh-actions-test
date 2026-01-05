@@ -30,12 +30,10 @@ for i in parsed_events["commits"]:
 commits_embed["title"] = str(cnt) + " new commit"
 commits_embed["footer"]["text"] = "Branch: " + parsed_events["ref"].replace("ref/heads/", "")
 
-print(parsed_events)
+print(parsed_events["ref"].replace("ref/heads/", ""))
 
 if cnt > 1 or cnt == 0:
    commits_embed["title"] += "s"
-
-print(json.dumps(commits_embed, indent=4))
 
 response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
    "username": "Armored Patrol Remastered Changelogs",
@@ -44,7 +42,7 @@ response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
    "embeds": [commits_embed],
 })
 
-print(response.text)
-
 if response.status_code != 204:
+   print(response.text)
+   
    exit(1)
