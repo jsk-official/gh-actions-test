@@ -9,6 +9,7 @@ commits_embed = {}
 cnt = 1
 
 commits_embed["fields"] = []
+commits_embed["description"] = "Branch: Unknown"
 
 for i in parsed_events["commits"]:
    commits_embed["fields"].append({
@@ -18,12 +19,10 @@ for i in parsed_events["commits"]:
 
    cnt += 1
 
-commits_embed["title"] = str(cnt) + "new commit"
+commits_embed["title"] = str(cnt) + " new commit"
 
 if cnt > 1:
    commits_embed["title"] += "s"
-
-commits_embed["description"] = "Branch: Unknown"
 
 print(commits_embed)
 
