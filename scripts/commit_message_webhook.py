@@ -14,7 +14,7 @@ for i in parsed_events["commits"]:
    commits["fields"][cnt] = {
       "name": "#" + str(cnt + 1) + "by " + i["author"]["name"],
       "value": i["message"]
-   })
+   }
 
    cnt += 1
 
