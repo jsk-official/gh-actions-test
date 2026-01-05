@@ -11,7 +11,7 @@ cnt = 1
 commits_embed["fields"] = []
 
 for i in parsed_events["commits"]:
-   commits["fields"].append({
+   commits_embed["fields"].append({
       "name": "#" + str(cnt) + "by " + i["author"]["name"],
       "value": i["message"]
    })
@@ -25,12 +25,12 @@ if cnt > 1:
 
 commits_embed["description"] = "Branch: Unknown"
 
-print(commits)
+print(commits_embed)
 
 response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
    "username": "Armored Patrol Remastered Changelogs",
    "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
-   "embeds": commits_embed,
+   "embeds": [commits_embed],
 })
 
 print(response.text)
