@@ -3,7 +3,7 @@ import requests
 import json
 
 events = open(os.environ["GITHUB_EVENT_PATH"], "r")
-parsed_events = json.loads(events)
+parsed_events = json.loads(events.read())
 
 for i in parsed_events.commits:
    print(i)
