@@ -18,7 +18,7 @@ for i in parsed_events["commits"]:
 
    cnt += 1
 
-commits_embed["title"] = cnt + "new commit"
+commits_embed["title"] = str(cnt) + "new commit"
 
 if cnt > 1:
    commits_embed["title"] += "s"
