@@ -8,13 +8,13 @@ parsed_events = json.loads(events.read())
 commits = {}
 cnt = 0
 
-commits["fields"] = {}
+commits["fields"] = []
 
 for i in parsed_events["commits"]:
-   commits["fields"][cnt] = {
+   commits["fields"].append({
       "name": "#" + str(cnt + 1) + "by " + i["author"]["name"],
       "value": i["message"]
-   }
+   })
 
    cnt += 1
 
