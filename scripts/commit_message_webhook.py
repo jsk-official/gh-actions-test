@@ -28,6 +28,8 @@ commits_embed["title"] = str(cnt) + " new commit"
 if cnt > 1:
    commits_embed["title"] += "s"
 
+print(json.dumps(commits_embed, indent=4))
+
 response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
    "username": "Armored Patrol Remastered Changelogs",
    "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
