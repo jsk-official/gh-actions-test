@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Webhook
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  webdookFire:
+    env:
+      commitmsg: ${{ github.event.head_commit.message }}
+      author: ${{ github.event.head_commit.author }}
+  
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fire a webhook
+        run: python3 scripts/commit_message_webhook.py
