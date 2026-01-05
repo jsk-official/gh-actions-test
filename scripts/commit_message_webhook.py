@@ -27,6 +27,7 @@ if cnt > 1:
    commits_embed["title"] += "s"
 
 print([commits_embed])
+commits_embed["fields"] = None
 
 response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
    "username": "Armored Patrol Remastered Changelogs",
