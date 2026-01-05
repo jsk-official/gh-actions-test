@@ -37,4 +37,4 @@ response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
 print(response.text)
 
 if response.status_code != 200:
-   os.exit(1)
+   exit(1)
