@@ -28,9 +28,7 @@ for i in parsed_events["commits"]:
    })
 
 commits_embed["title"] = str(cnt) + " new commit"
-commits_embed["footer"]["text"] = "Branch: " + parsed_events["ref"].replace("ref/heads/", "")
-
-print(parsed_events["ref"].replace("ref/heads/", ""))
+commits_embed["footer"]["text"] = "Branch: " + parsed_events["ref"].replace("refs/heads/", "")
 
 if cnt > 1 or cnt == 0:
    commits_embed["title"] += "s"
