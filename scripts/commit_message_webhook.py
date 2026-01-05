@@ -5,11 +5,13 @@ import json
 events = open(os.environ["GITHUB_EVENT_PATH"], "r")
 parsed_events = json.loads(events.read())
 
-commits_embed = {}
-cnt = 1
+commits_embed = {
+   "title": "Changelog",
+   "description": "Branch: unknown",
+   "fields": [],
+}
 
-commits_embed["fields"] = []
-commits_embed["description"] = "Branch: Unknown"
+cnt = 1
 
 for i in parsed_events["commits"]:
    print(i)
