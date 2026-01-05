@@ -6,14 +6,13 @@ events = open(os.environ["GITHUB_EVENT_PATH"], "r")
 parsed_events = json.loads(events.read())
 
 commits = {}
-cnt = 1
+cnt = 0
 
 commits["fields"] = {}
 
-
 for i in parsed_events["commits"]:
-   commits["fields"].append({
-      "name": "#" + str(cnt) + "by " + i["author"]["name"],
+   commits["fields"][cnt] = {
+      "name": "#" + str(cnt + 1) + "by " + i["author"]["name"],
       "value": i["message"]
    })
 
