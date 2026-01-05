@@ -11,6 +11,7 @@ commits_embed = {
    "footer": {
       "text": "Branch: main",
    },
+   "color": 0x206694,
 }
 
 cnt = 0
