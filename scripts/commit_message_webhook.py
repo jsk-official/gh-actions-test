@@ -7,11 +7,13 @@ parsed_events = json.loads(events.read())
 
 commits_embed = {
    "title": "Changelog",
-   "description": "Branch: unknown",
    "fields": [],
+   "footer": [
+      "text": "Branch: main",
+   ],
 }
 
-cnt = 1
+cnt = 0
 
 for i in parsed_events["commits"]:
    print(i)
