@@ -27,7 +27,7 @@ for i in parsed_events["commits"]:
    })
 
 commits_embed["title"] = str(cnt) + " new commit"
-commits_embed["footer"]["text"] = "Branch Reference: " + parsed_events["ref"]
+commits_embed["footer"]["text"] = "Branch: " + parsed_events["ref"].replace("ref/heads/", "")
 
 print(parsed_events)
 
