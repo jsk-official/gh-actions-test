@@ -8,7 +8,7 @@ parsed_events = json.loads(events.read())
 commits = {}
 cnt = 1
 
-commits["fields"] = []
+commits["fields"] = {}
 
 
 for i in parsed_events["commits"]:
@@ -25,8 +25,10 @@ commits["footer"] = {
 
 print(commits)
 
-requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
+response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
    "username": "Armored Patrol Remastered Changelogs",
    "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
    "embeds": commits,
 })
+
+print(response.text)
