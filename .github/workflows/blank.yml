@@ -11,7 +11,6 @@ on:
 jobs:
   webhookFire:
     env:
-      commitmsgs: ${{ github.event.commits.*.message }}
       author: ${{ github.event.head_commit.author.name }}
       COMMITS_CHANNEL_WEBHOOK: ${{ secrets.COMMITS_CHANNEL_WEBHOOK }}
   
