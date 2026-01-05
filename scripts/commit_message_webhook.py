@@ -5,11 +5,11 @@ import json
 events = open(os.environ["GITHUB_EVENT_PATH"], "r")
 parsed_events = json.loads(events.read())
 
-for i in parsed_events["commits"]:
-   print(i)
+message_content = ""
 
-print(os.environ["author"])
+for i in parsed_events["commits"]:
+   message_content += + i['message'] + ' - ' + i['author']['name'] + '\n'
 
 requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
-   "content": os.environ["author"] + " - " + os.environ["author"]
+   "content": message_content
 })
