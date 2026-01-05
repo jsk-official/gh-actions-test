@@ -13,7 +13,7 @@ commits["fields"] = []
 
 for i in parsed_events["commits"]:
    commits["fields"].append({
-      "name": "#" + cnt + "by " + i["author"]["name"],
+      "name": "#" + str(cnt) + "by " + i["author"]["name"],
       "value": i["message"]
    })
 
