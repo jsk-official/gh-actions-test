@@ -26,7 +26,7 @@ commits_embed["title"] = str(cnt) + " new commit"
 if cnt > 1:
    commits_embed["title"] += "s"
 
-print(commits_embed)
+print([commits_embed])
 
 response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
    "username": "Armored Patrol Remastered Changelogs",
