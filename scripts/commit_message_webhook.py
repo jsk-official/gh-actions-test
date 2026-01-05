@@ -32,6 +32,7 @@ commits_embed["fields"] = None
 response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
    "username": "Armored Patrol Remastered Changelogs",
    "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
+   "content": "Detected a new change to the Armored Patrol Remastered development repository."
    "embeds": [commits_embed],
 })
 
