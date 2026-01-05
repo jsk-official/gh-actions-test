@@ -16,16 +16,17 @@ commits_embed = {
 cnt = 0
 
 for i in parsed_events["commits"]:
-   print(i)
-   
+   cnt += 1
+
    commits_embed["fields"].append({
       "name": "#" + str(cnt) + " by " + i["author"]["name"],
       "value": i["message"]
    })
 
-   cnt += 1
-
 commits_embed["title"] = str(cnt) + " new commit"
+commits_embed["footer"]["text"] = "Branch: 1"
+
+print(parsed_events["head_ref"])
 
 if cnt > 1:
    commits_embed["title"] += "s"
