@@ -12,8 +12,10 @@ commits_embed["fields"] = []
 commits_embed["description"] = "Branch: Unknown"
 
 for i in parsed_events["commits"]:
+   print(i)
+   
    commits_embed["fields"].append({
-      "name": "#" + str(cnt) + "by " + i["author"]["name"],
+      "name": "#" + str(cnt) + " by " + i["author"]["name"],
       "value": i["message"]
    })
 
@@ -33,3 +35,6 @@ response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], {
 })
 
 print(response.text)
+
+if response.statusCode != 200:
+   os.exit(1)
