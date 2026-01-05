@@ -16,6 +16,9 @@ commits_embed = {
 cnt = 0
 
 for i in parsed_events["commits"]:
+   if cnt == 25:
+      break
+   
    cnt += 1
 
    commits_embed["fields"].append({
@@ -28,7 +31,7 @@ commits_embed["footer"]["text"] = "Branch Reference: " + parsed_events["ref"]
 
 print(parsed_events)
 
-if cnt > 1:
+if cnt > 1 or cnt == 0:
    commits_embed["title"] += "s"
 
 print(json.dumps(commits_embed, indent=4))
