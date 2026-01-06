@@ -18,7 +18,6 @@ commits_embed["author"] = {
 }
 
 cnt = 0
-
 desc = ""
    
 for i in parsed_events["commits"]:
