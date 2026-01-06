@@ -43,4 +43,6 @@ if cnt > 1:
       
       exit(1)
 else:
-   exit(1) #didn't find any commits
+   print("No commits found")
+   
+   exit(1)
