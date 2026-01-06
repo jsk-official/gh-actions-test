@@ -7,11 +7,12 @@ parsed_events = json.loads(events.read())
 
 commits_embed = {
    "title": "Changelog",
-   "author": {
-      "name": parsed_events["sender"]["name"],
-      "image_url": parsed_events["sender"]["avatar_url"],
-   }
    "color": 0x206694,
+}
+
+commits_embed["author"] = {
+   "name": parsed_events["sender"]["name"],
+   "image_url": parsed_events["sender"]["avatar_url"],
 }
 
 cnt = 0
