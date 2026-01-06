@@ -20,7 +20,7 @@ commits_embed["author"] = {
 cnt = 0
 desc = ""
 
-for i in parsed_events["commits"]:
+for i in parsed_events["commits"].reverse():
    if cnt == 25:      
       break
 
