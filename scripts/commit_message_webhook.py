@@ -17,7 +17,9 @@ cnt = 0
 desc = ""
 
 for i in parsed_events["commits"]:
-   if cnt == 25:
+   if cnt == 24:
+      desc += "Truncated to the last 24 commits."
+      
       break
 
    desc += i["message"] + " - " + i["author"]["name"] + "\n"
