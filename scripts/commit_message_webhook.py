@@ -26,7 +26,7 @@ for i in parsed_events["commits"]:
    cnt += 1
 
 print(parsed_events)
-commits_embed["title"] = "[" + parsed_events["name"] + parsed_events["ref"].replace("refs/heads/", "") + "] " + str(cnt) + " new commit"
+commits_embed["title"] = "[" + parsed_events["repository"]["name"] + parsed_events["ref"].replace("refs/heads/", "") + "] " + str(cnt) + " new commit"
 
 if cnt > 1:
    commits_embed["title"] += "s"
