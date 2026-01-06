@@ -29,7 +29,7 @@ for x in range(26):
 
 for i in parsed_events["commits"]:
    if cnt == 25:
-      cnt = "25+"
+      cnt = 26
       
       break
 
@@ -38,7 +38,7 @@ for i in parsed_events["commits"]:
 
 print(parsed_events)
 commits_embed["description"] = desc
-commits_embed["title"] = "[" + parsed_events["repository"]["name"] + ":" + parsed_events["ref"].replace("refs/heads/", "") + "] " + str(cnt) + " new commit"
+commits_embed["title"] = "[" + parsed_events["repository"]["name"] + ":" + parsed_events["ref"].replace("refs/heads/", "") + "] " + (cnt > 25 and "25+" or str(cnt)) + " new commit"
 
 if cnt > 1:
    commits_embed["title"] += "s"
