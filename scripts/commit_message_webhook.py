@@ -8,6 +8,7 @@ parsed_events = json.loads(events.read())
 commits_embed = {
    "title": "Changelog",
    "color": 0x206694,
+   "url": parsed_events["sender"]["html_url"],
 }
 
 commits_embed["author"] = {
@@ -23,11 +24,11 @@ for i in parsed_events["commits"]:
    if cnt == 25:      
       break
 
-   desc += "`{}` {} - {} \n".format(i["id"][:7], i["message"], i["author"]["username"])
+   desc += "`\u001b[{};34m` {} - {} \n".format(i["id"][:7], i["message"], i["author"]["username"])
    cnt += 1
 
 commits_embed["description"] = desc
-commits_embed["title"] = "[{}:{}] {} {}".format(parsed_events["repository"]["name"], parsed_events["ref"].replace("refs/heads/", ""), (cnt >= 25 and "25+" or str(cnt)), (cnt >= 25 and "25+" or str(cnt)) + (cnt >= 1 and "new commit" or "new commits"))
+commits_embed["title"] = "[{}:{}] {} {}".format(parsed_events["repository"]["name"], parsed_events["ref"].replace("refs/heads/", ""), (cnt >= 25 and "25+" or str(cnt)), (cnt >= 1 and "new commit" or "new commits"))
 
 if cnt >= 1:
    response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
