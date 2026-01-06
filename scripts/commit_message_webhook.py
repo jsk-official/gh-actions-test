@@ -23,7 +23,7 @@ for i in parsed_events["commits"]:
    if cnt == 25:
       break
 
-   desc += "name": i["message"] + " - " + i["author"]["name"] + "\n"
+   desc += i["message"] + " - " + i["author"]["name"] + "\n"
    cnt += 1
 
 commits_embed["title"] = "[" + parsed_events["name"] + parsed_events["ref"].replace("refs/heads/", "") + "] " + str(cnt) + " new commit"
