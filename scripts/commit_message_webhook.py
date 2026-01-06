@@ -24,7 +24,7 @@ for i in parsed_events["commits"]:
    if cnt == 25:      
       break
 
-   desc += "`\u001b[{};34m` {} - {} \n".format(i["id"][:7], i["message"], i["author"]["username"])
+   desc += "`\u001b[{}];34m` {} - {} \n".format(i["id"][:7], i["message"], i["author"]["username"])
    cnt += 1
 
 commits_embed["description"] = desc
