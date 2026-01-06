@@ -7,14 +7,17 @@ parsed_events = json.loads(events.read())
 
 commits_embed = {
    "title": "Changelog",
-   "fields": [],
    "footer": {
       "text": "Branch: main",
    },
    "color": 0x206694,
+   "author": {
+      "name"
+   }
 }
 
 cnt = 0
+
 
 for i in parsed_events["commits"]:
    if cnt == 25:
@@ -23,13 +26,11 @@ for i in parsed_events["commits"]:
    cnt += 1
 
    commits_embed["fields"].append({
-      "name": "#" + str(cnt) + " by " + i["author"]["name"],
+      "name": "#" + str(cnt) + " - " + i["author"]["name"],
       "value": i["message"]
    })
 
-commits_embed["title"] = str(cnt) + " new commit"
-commits_embed["footer"]["text"] = "Branch: " + parsed_events["ref"].replace("refs/heads/", "")
-
+commits_embed["title"] = "[" + parsed_events["name"] + parsed_events["ref"].replace("refs/heads/", "") + "]" str(cnt) + " new commit"
 print(parsed_events)
 
 if cnt > 1:
