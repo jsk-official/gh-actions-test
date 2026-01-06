@@ -19,6 +19,8 @@ commits_embed["author"] = {
 
 cnt = 0
 
+#
+
 commits_embed["title"] = "[{}:{}] {} {}".format(parsed_events["repository"]["name"], parsed_events["ref"].replace("refs/heads/", ""), (cnt >= 25 and "25+" or str(cnt)), (cnt >= 1 and "new commit" or "new commits"))
 
 parsed_events["commits"].reverse() # we do this so that in Discord, the commits show the latest first and the oldest last
