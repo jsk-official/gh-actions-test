@@ -20,7 +20,12 @@ cnt = 0
 desc = ""
 
 for x in range(26):
-   parsed_events["commits"][x] = "aaaa " + str(x)
+   parsed_events["commits"].append({
+      "message": "aaaa" + str(x),
+      "author": {
+         "username": "jsk",
+      }
+   })
 
 for i in parsed_events["commits"]:
    if cnt == 25:
