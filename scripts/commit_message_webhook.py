@@ -23,11 +23,11 @@ for i in parsed_events["commits"]:
    if cnt == 25:      
       break
 
-   desc += i["message"] + " - " + i["author"]["username"] + "\n"
+   desc +=  + i["message"] + " - " + i["author"]["username"] + "\n"
    cnt += 1
 
 commits_embed["description"] = desc
-commits_embed["title"] = "[" + parsed_events["repository"]["name"] + ":" + parsed_events["ref"].replace("refs/heads/", "") + "] " + (cnt >= 25 and "25+" or str(cnt)) + (cnt >= 1 and " new commit" or " new commits")
+commits_embed["title"] = "[{}:{}] {} {}".format(parsed_events["repository"]["name"], parsed_events["ref"].replace("refs/heads/", ""), (cnt >= 25 and "25+" or str(cnt)), (cnt >= 25 and "25+" or str(cnt)) + (cnt >= 1 and "new commit" or "new commits"))
 
 if cnt >= 1:
    response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
