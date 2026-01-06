@@ -30,7 +30,7 @@ for i in parsed_events["commits"]:
       "value": i["message"]
    })
 
-commits_embed["title"] = "[" + parsed_events["name"] + parsed_events["ref"].replace("refs/heads/", "") + "]" str(cnt) + " new commit"
+commits_embed["title"] = "[" + parsed_events["name"] + parsed_events["ref"].replace("refs/heads/", "") + "] " + str(cnt) + " new commit"
 print(parsed_events)
 
 if cnt > 1:
