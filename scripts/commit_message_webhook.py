@@ -28,9 +28,10 @@ for i in parsed_events["commits"]:
 print(parsed_events)
 commits_embed["title"] = "[" + parsed_events["repository"]["name"] + parsed_events["ref"].replace("refs/heads/", "") + "] " + str(cnt) + " new commit"
 
-if cnt >= 1:
+if cnt > 1:
    commits_embed["title"] += "s"
 
+if cnt >= 1:
    response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
       "username": "Armored Patrol Remastered Changelogs",
       "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
