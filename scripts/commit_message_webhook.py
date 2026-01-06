@@ -11,9 +11,6 @@ commits_embed = {
       "text": "Branch: main",
    },
    "color": 0x206694,
-   "author": {
-      "name"
-   }
 }
 
 cnt = 0
