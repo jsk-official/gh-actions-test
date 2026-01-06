@@ -30,17 +30,21 @@ for i in parsed_events["commits"]:
 commits_embed["title"] = str(cnt) + " new commit"
 commits_embed["footer"]["text"] = "Branch: " + parsed_events["ref"].replace("refs/heads/", "")
 
-if cnt > 1 or cnt == 0:
+print(parsed_events)
+
+if cnt > 1:
    commits_embed["title"] += "s"
 
-response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
-   "username": "Armored Patrol Remastered Changelogs",
-   "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
-   "content": "Detected a new change to the Armored Patrol Remastered development repository.",
-   "embeds": [commits_embed],
-})
+   response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
+      "username": "Armored Patrol Remastered Changelogs",
+      "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
+      "content": "Detected a new change to the Armored Patrol Remastered development repository.",
+      "embeds": [commits_embed],
+   })
 
-if response.status_code != 204:
-   print(response.text)
-   
-   exit(1)
+   if response.status_code != 204:
+      print(response.text)
+      
+      exit(1)
+else:
+   exit(1) #didn't find any commits
