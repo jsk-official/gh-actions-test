@@ -18,19 +18,21 @@ commits_embed["author"] = {
 }
 
 cnt = 0
-desc = ""
 
-for i in parsed_events["commits"].reverse():
-   if cnt == 25:      
-      break
-
-   desc += "`{}` {} - {} \n".format(i["id"][:7], i["message"], i["author"]["username"])
-   cnt += 1
-
-commits_embed["description"] = desc
 commits_embed["title"] = "[{}:{}] {} {}".format(parsed_events["repository"]["name"], parsed_events["ref"].replace("refs/heads/", ""), (cnt >= 25 and "25+" or str(cnt)), (cnt >= 1 and "new commit" or "new commits"))
 
-if cnt >= 1:
+if len(parsed_events["commits"]) >= 1:
+   desc = ""
+   
+   for i in parsed_events["commits"].reverse():
+      if cnt == 25:      
+         break
+   
+      desc += "`{}` {} - {} \n".format(i["id"][:7], i["message"], i["author"]["username"])
+      cnt += 1
+
+   commits_embed["description"] = desc
+   
    response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
       "username": "Armored Patrol Remastered Changelogs",
       "avatar_url": "https://cdn.discordapp.com/icons/1021084114343952484/db5194b83958a75d14cf2e84a715cddb.webp?size=256&quality=lossless",
