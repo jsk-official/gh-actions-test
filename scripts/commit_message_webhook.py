@@ -19,29 +19,15 @@ commits_embed["author"] = {
 cnt = 0
 desc = ""
 
-for x in range(26):
-   parsed_events["commits"].append({
-      "message": "aaaa" + str(x),
-      "author": {
-         "username": "jsk",
-      }
-   })
-
 for i in parsed_events["commits"]:
-   if cnt == 25:
-      cnt = 26
-      
+   if cnt == 25:      
       break
 
    desc += i["message"] + " - " + i["author"]["username"] + "\n"
    cnt += 1
 
-print(parsed_events)
 commits_embed["description"] = desc
-commits_embed["title"] = "[" + parsed_events["repository"]["name"] + ":" + parsed_events["ref"].replace("refs/heads/", "") + "] " + (cnt > 25 and "25+" or str(cnt)) + " new commit"
-
-if cnt > 1:
-   commits_embed["title"] += "s"
+commits_embed["title"] = "[" + parsed_events["repository"]["name"] + ":" + parsed_events["ref"].replace("refs/heads/", "") + "] " + (cnt >= 25 and "25+" or str(cnt)) + (cnt >= 1 and " new commit" or " new commits")
 
 if cnt >= 1:
    response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
