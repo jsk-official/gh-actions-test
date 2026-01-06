@@ -12,7 +12,8 @@ commits_embed = {
 
 commits_embed["author"] = {
    "name": parsed_events["sender"]["login"],
-   "avatar_url": parsed_events["sender"]["avatar_url"],
+   "icon_url": parsed_events["sender"]["avatar_url"],
+   "url": parsed_events["sender"]["html_url"],
 }
 
 cnt = 0
