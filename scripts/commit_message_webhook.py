@@ -19,13 +19,16 @@ commits_embed["author"] = {
 cnt = 0
 desc = ""
 
+for x in range(26):
+   parsed_events["commits"][x] = "aaaa " + str(x)
+
 for i in parsed_events["commits"]:
    if cnt == 25:
       cnt = "25+"
       
       break
 
-   desc += i["message"] + " - " + i["author"]["name"] + "\n"
+   desc += i["message"] + " - " + i["author"]["username"] + "\n"
    cnt += 1
 
 print(parsed_events)
