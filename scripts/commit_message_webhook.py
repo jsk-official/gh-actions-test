@@ -19,8 +19,8 @@ cnt = 0
 desc = ""
 
 for i in parsed_events["commits"]:
-   if cnt == 24:
-      desc += "Truncated to the last 24 commits."
+   if cnt == 25:
+      cnt = "25+"
       
       break
 
@@ -28,6 +28,7 @@ for i in parsed_events["commits"]:
    cnt += 1
 
 print(parsed_events)
+commits_embed["description"] = desc
 commits_embed["title"] = "[" + parsed_events["repository"]["name"] + ":" + parsed_events["ref"].replace("refs/heads/", "") + "] " + str(cnt) + " new commit"
 
 if cnt > 1:
