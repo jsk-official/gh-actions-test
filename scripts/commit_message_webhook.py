@@ -19,23 +19,21 @@ commits_embed["author"] = {
 
 cnt = 0
 
-#
+desc = ""
+   
+for i in parsed_events["commits"]:
+   if cnt == 25:      
+      break
+   
+   desc += "`{}` {} - {} \n".format(i["id"][:7], i["message"].split("\n")[0], i["author"]["username"])
+   cnt += 1
 
 commits_embed["title"] = "[{}:{}] {} {}".format(parsed_events["repository"]["name"], parsed_events["ref"].replace("refs/heads/", ""), (cnt >= 25 and "25+" or str(cnt)), (cnt >= 1 and "new commit" or "new commits"))
 
 parsed_events["commits"].reverse() # we do this so that in Discord, the commits show the latest first and the oldest last
 # instead of oldest first and latest last
 
-if len(parsed_events["commits"]) >= 1:
-   desc = ""
-   
-   for i in parsed_events["commits"]:
-      if cnt == 25:      
-         break
-   
-      desc += "`{}` {} - {} \n".format(i["id"][:7], i["message"].split("\n")[0], i["author"]["username"])
-      cnt += 1
-
+if cnt >= 1:
    commits_embed["description"] = desc
    
    response = requests.post(os.environ["COMMITS_CHANNEL_WEBHOOK"], json={
